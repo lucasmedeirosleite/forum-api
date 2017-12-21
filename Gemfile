@@ -18,6 +18,7 @@ gem 'puma', '~> 3.7'
 gem 'rack-cors'
 gem 'rails', '~> 5.1.4'
 gem 'responders'
+gem 'versionist'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -39,6 +40,7 @@ group :test do
   gem 'coveralls'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'timecop'
