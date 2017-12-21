@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
   
   describe 'relations' do
     it { is_expected.to have_many(:topics) }
+    it { is_expected.to have_many(:posts) }
   end
   
   describe 'validations' do
