@@ -3,12 +3,12 @@
 module V1
   class TopicsController < ApplicationController
     def index
-      render json: current_user.topics, status: 200
+      render json: Topic.all.order(date: :desc), status: 200
     end
 
     def show
-      topic = current_user.topics.find_by(id: params[:id])
-      return render json: { message: 'Topic not found' }, status: 404 unless topic.present?
+      topic = Topic.find_by(id: params[:id])
+      return not_found unless topic.present?
 
       render json: { topic: topic }, status: 200
     end
@@ -17,7 +17,7 @@ module V1
       topic = Topic.new(topic_params.merge(date: Time.now.utc))
 
       if topic.save
-        render json: { topic: topic }, status: 201
+        render json: topic, status: 201
       else
         render json: { errors: topic.errors.messages }, status: 422
       end
@@ -25,7 +25,7 @@ module V1
 
     def update
       topic = current_user.topics.find_by(id: params[:id])
-      return render json: { message: 'Topic not found' }, status: 404 unless topic.present?
+      return not_found unless topic.present?
 
       if topic.update(topic_params)
         render json: { topic: topic }, status: 200
@@ -36,7 +36,7 @@ module V1
 
     def destroy
       topic = current_user.topics.find_by(id: params[:id])
-      return render json: { message: 'Topic not found' }, status: 404 unless topic.present?
+      return not_found unless topic.present?
 
       topic.destroy
       head 204
@@ -49,6 +49,10 @@ module V1
         .require(:topic)
         .permit(:title, :description, :date, :user_id)
         .merge(user_id: current_user.id)
+    end
+    
+    def not_found
+      render json: { message: 'Topic not found' }, status: 404 
     end
   end
 end
