@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/LineLength
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -278,3 +279,4 @@ Devise.setup do |config|
     jwt.secret = ENV.fetch('DEVISE_JWT_SECRET_KEY')
   end
 end
+# rubocop:enable Metrics/LineLength

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
@@ -19,10 +21,10 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
-      
+
       t.timestamps
     end
-    
+
     add_index :users, :email, unique: true
     add_index :users, :reset_password_token, unique: true
   end
