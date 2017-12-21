@@ -14,9 +14,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
 
       ## Rememberable
       t.datetime :remember_created_at
-      
+
       ## JWT
-      
+
       t.string :jti, null: false
 
       t.timestamps
