@@ -281,6 +281,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rack-cors
   rails (~> 5.1.4)
+  responders
   rspec-rails
   rubocop
   spring

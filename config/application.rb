@@ -21,8 +21,7 @@ module ForumApi
 
     config.autoload_paths += %W[#{config.root}/app/repositories
                                 #{config.root}/app/services
-                                #{config.root}/app/responders
-                                #{config.root}/app/formatters]
+                                #{config.root}/app/responders]
 
     config.api_only = true
   end

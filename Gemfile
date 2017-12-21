@@ -17,6 +17,7 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rack-cors'
 gem 'rails', '~> 5.1.4'
+gem 'responders'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
