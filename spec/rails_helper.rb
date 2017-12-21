@@ -5,6 +5,8 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
+require 'factory_bot_rails'
+require 'shoulda-matchers'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -15,6 +17,13 @@ APIMatchers.setup do |config|
   config.header_content_type_key = 'Content-Type'
   config.response_body_method = :body
   config.http_status_method = :status
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
 
 RSpec.configure do |config|
