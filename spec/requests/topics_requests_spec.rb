@@ -168,6 +168,7 @@ RSpec.describe 'Topics', type: :request do
         expect(response).to have_node(:description).with(topic.description)
         expect(response).to have_node(:user_id).with(user.id)
         expect(response).to have_node(:date)
+        expect(response).to have_node(:posts)
       end
     end
   end
@@ -198,6 +199,7 @@ RSpec.describe 'Topics', type: :request do
           expect(response).to have_node(:description).with(topic.description)
           expect(response).to have_node(:date)
           expect(response).to have_node(:user_id).with(user.id)
+          expect(response).not_to have_node(:posts)
         end
       end
     end

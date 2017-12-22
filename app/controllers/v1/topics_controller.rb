@@ -9,7 +9,7 @@ module V1
     def show
       topic = repository.find_by(id: params[:id])
       if topic
-        render json: topic, status: 200
+        render json: topic, serializer: TopicDetailSerializer, status: 200
       else
         not_found
       end
