@@ -28,19 +28,19 @@ module V1
     end
 
     private
-    
+
     def render_not_found_for_topic
       not_found('Topic') if current_topic.blank?
     end
-    
+
     def posts_repo
       @_posts_repo ||= PostsRepository.new(topic: current_topic)
     end
-    
+
     def topics_repo
       @_topics_repo ||= TopicsRepository.new(user: current_user)
     end
-    
+
     def current_topic
       @_current_topic ||= topics_repo.find_by(id: params[:topic_id])
     end
@@ -51,7 +51,7 @@ module V1
         .permit(:description, :date, :user_id, :topic_id)
         .merge(user_id: current_user.id, topic_id: current_topic.id, date: Time.now.utc)
     end
-    
+
     def not_found(model = 'Post')
       render json: { message: "#{model} not found" }, status: 404
     end

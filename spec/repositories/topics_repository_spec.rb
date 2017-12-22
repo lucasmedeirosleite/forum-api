@@ -31,7 +31,7 @@ RSpec.describe TopicsRepository, type: :repository do
     context 'when no user passed' do
       let(:user) { nil }
       let(:topic) { FactoryBot.create(:topic) }
-      
+
       it 'does not return any topic' do
         expect(find_topic).to be_nil
       end
