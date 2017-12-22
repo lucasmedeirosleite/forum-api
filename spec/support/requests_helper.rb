@@ -8,7 +8,7 @@ module RequestsHelper
         password: user.password
       }
     }
-    
+
     post(user_session_path, params: params)
     response.headers['Authorization']
   end
