@@ -60,9 +60,9 @@ module V1
         .permit(:title, :description, :date, :user_id)
         .merge(user_id: current_user.id)
     end
-    
+
     def not_found
-      render json: { message: 'Topic not found' }, status: 404 
+      render json: { message: 'Topic not found' }, status: 404
     end
   end
 end
