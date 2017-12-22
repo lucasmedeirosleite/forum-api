@@ -175,7 +175,7 @@ RSpec.describe 'Topics', type: :request do
 
   describe 'GET #index' do
     subject(:list_topics) do
-      private_get(topics_path, token: token)
+      private_get(topics_path, params: { page: 1, per: 100 }, token: token)
     end
 
     context 'when there are no topics' do
