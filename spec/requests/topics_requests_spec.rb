@@ -7,7 +7,7 @@ RSpec.describe 'Topics', type: :request do
   let(:token) { authenticate(user: user) }
 
   describe 'POST #create' do
-    subject(:create_post) do
+    subject(:create_topic) do
       private_post(topics_path, params: { topic: topic_params }, token: token)
     end
 
@@ -20,7 +20,7 @@ RSpec.describe 'Topics', type: :request do
       end
 
       it 'returns an invalid response' do
-        create_post
+        create_topic
 
         expect(response).to be_unprocessable_entity
         expect(response).to have_node(:errors)
@@ -39,7 +39,7 @@ RSpec.describe 'Topics', type: :request do
 
       it 'returns a correct response' do
         expect do
-          create_post
+          create_topic
         end.to change { Topic.count }.by(1)
 
         expect(response).to be_created
