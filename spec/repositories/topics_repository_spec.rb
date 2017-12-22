@@ -28,6 +28,15 @@ RSpec.describe TopicsRepository, type: :repository do
   describe '#find_user_topic' do
     subject(:find_topic) { repository.find_user_topic(id: topic.id) }
 
+    context 'when no user passed' do
+      let(:user) { nil }
+      let(:topic) { FactoryBot.create(:topic) }
+      
+      it 'does not return any topic' do
+        expect(find_topic).to be_nil
+      end
+    end
+
     context 'when user created a topic' do
       let(:topic) { FactoryBot.create(:topic, user: user) }
 

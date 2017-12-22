@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TopicsRepository
-  def initialize(user:, data_source: Topic)
+  def initialize(user: nil, data_source: Topic)
     @user = user
     @data_source = data_source
   end
@@ -11,6 +11,7 @@ class TopicsRepository
   end
 
   def find_user_topic(id:)
+    return if user.blank?
     user.topics.find_by(id: id)
   end
 

@@ -51,7 +51,7 @@ module V1
     private
 
     def repository
-      @_repository = TopicsRepository.new(user: current_user)
+      @_repository ||= TopicsRepository.new(user: current_user)
     end
 
     def topic_params
