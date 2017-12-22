@@ -3,7 +3,7 @@
 module V1
   class TopicsController < ApplicationController
     def index
-      render json: repository.all, status: 200
+      render json: repository.all(page: params[:page], per: params[:per]), status: 200
     end
 
     def show

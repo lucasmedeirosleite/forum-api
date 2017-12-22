@@ -13,11 +13,13 @@ gem 'active_model_serializers'
 gem 'caze'
 gem 'devise'
 gem 'devise-jwt'
+gem 'kaminari'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rack-cors'
 gem 'rails', '~> 5.1.4'
 gem 'responders'
+gem 'searchkick'
 gem 'versionist'
 
 group :development, :test do

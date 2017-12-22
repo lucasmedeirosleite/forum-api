@@ -6,8 +6,17 @@ class TopicsRepository
     @data_source = data_source
   end
 
-  def all
-    data_source.all.order(date: :desc)
+  def all(term: '*', page: 1, per: 100)
+    data_source.search(term,
+                       page: page, 
+                       per_page: per, 
+                       order: { date: :desc },
+                       misspellings: { below: 5 },
+                       fields: ['title^10', 
+                                'description^8', 
+                                'posts_description^6',
+                                'author_name^4',
+                                'posts_author_name^2'])
   end
 
   def find_user_topic(id:)
