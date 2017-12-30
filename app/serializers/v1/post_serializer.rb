@@ -2,10 +2,14 @@
 
 module V1
   class PostSerializer < ActiveModel::Serializer
-    attributes :id, :description, :date, :user_id, :topic_id
+    attributes :id, :description, :date, :topic_id, :user
 
     def date
-      object.date.to_s
+      object.date.strftime('%Y-%m-%d %H:%M:%S')
+    end
+
+    def user
+      object.user
     end
   end
 end

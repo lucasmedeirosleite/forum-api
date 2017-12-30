@@ -17,6 +17,8 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
+Searchkick.disable_callbacks
+
 APIMatchers.setup do |config|
   config.header_method = :headers
   config.header_content_type_key = 'Content-Type'

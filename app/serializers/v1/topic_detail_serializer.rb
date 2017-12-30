@@ -2,12 +2,13 @@
 
 module V1
   class TopicDetailSerializer < ActiveModel::Serializer
-    attributes :id, :title, :description, :date, :user_id
-    
+    attributes :id, :title, :description, :date
+
+    belongs_to :user, serializer: UserSerializer
     has_many :posts, serializer: PostSerializer
 
     def date
-      object.date.to_s
+      object.date.strftime('%Y-%m-%d %H:%M:%S')
     end
   end
 end

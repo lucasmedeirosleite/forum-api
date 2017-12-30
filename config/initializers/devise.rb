@@ -277,6 +277,7 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.jwt do |jwt|
     jwt.secret = ENV.fetch('DEVISE_JWT_SECRET_KEY')
+    jwt.expiration_time = 1.month
   end
 end
 # rubocop:enable Metrics/LineLength

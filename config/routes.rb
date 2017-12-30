@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   api_version(module: 'V1',
               header: { name: 'Accept', value: 'application/vnd.forum.com; version=1' }) do
 
-    resources :topics, only: %i[create update destroy index show], defaults: { format: :json } do
+    resources :topics, except: %i[edit new], defaults: { format: :json } do
       resources :posts, only: %i[create destroy index], defaults: { format: :json }
     end
   end

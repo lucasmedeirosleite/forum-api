@@ -6,14 +6,14 @@ class TopicsRepository
     @data_source = data_source
   end
 
-  def all(term: '*', page: 1, per: 100)
+  def all(term: nil)
+    return data_source.order(date: :desc) if term.blank?
+
     data_source.search(term,
-                       page: page, 
-                       per_page: per, 
                        order: { date: :desc },
                        misspellings: { below: 5 },
-                       fields: ['title^10', 
-                                'description^8', 
+                       fields: ['title^10',
+                                'description^8',
                                 'posts_description^6',
                                 'author_name^4',
                                 'posts_author_name^2'])

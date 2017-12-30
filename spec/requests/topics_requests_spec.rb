@@ -47,7 +47,7 @@ RSpec.describe 'Topics', type: :request do
         expect(response).to have_node(:date)
         expect(response).to have_node(:title).with(topic_params[:title])
         expect(response).to have_node(:description).with(topic_params[:description])
-        expect(response).to have_node(:user_id).with(user.id)
+        expect(response).to have_node(:user)
       end
     end
   end
@@ -106,7 +106,7 @@ RSpec.describe 'Topics', type: :request do
         expect(response).to have_node(:date)
         expect(response).to have_node(:title).with(topic_params[:title])
         expect(response).to have_node(:description).with(topic_params[:description])
-        expect(response).to have_node(:user_id).with(user.id)
+        expect(response).to have_node(:user)
       end
     end
   end
@@ -166,7 +166,7 @@ RSpec.describe 'Topics', type: :request do
         expect(response).to have_node(:id).with(topic.id)
         expect(response).to have_node(:title).with(topic.title)
         expect(response).to have_node(:description).with(topic.description)
-        expect(response).to have_node(:user_id).with(user.id)
+        expect(response).to have_node(:user)
         expect(response).to have_node(:date)
         expect(response).to have_node(:posts)
       end
@@ -175,7 +175,7 @@ RSpec.describe 'Topics', type: :request do
 
   describe 'GET #index' do
     subject(:list_topics) do
-      private_get(topics_path, params: { page: 1, per: 100 }, token: token)
+      private_get(topics_path, token: token)
     end
 
     context 'when there are no topics' do
@@ -198,7 +198,7 @@ RSpec.describe 'Topics', type: :request do
           expect(response).to have_node(:title).with(topic.title)
           expect(response).to have_node(:description).with(topic.description)
           expect(response).to have_node(:date)
-          expect(response).to have_node(:user_id).with(user.id)
+          expect(response).to have_node(:user)
           expect(response).not_to have_node(:posts)
         end
       end
